@@ -5,7 +5,7 @@ public class calculate {
     public static String Simplify(int num,int den){
     int remainder;//余数
     int quotient;//商
-    int temp;
+
     if(num/den == 0) {
         for (int i = 1; i <= num; i++) {
             if (num % i == 0 && den % i == 0) {
