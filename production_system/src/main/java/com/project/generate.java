@@ -3,10 +3,9 @@ package com.project;
 import java.util.Random;
 
 public class generate {
-    public static String generateExpress( int max) {
+    public static String generateExpress(int max) {
 
         Random ran = new Random();
-        ran.nextInt(max);
 
         String[] sign = {"+", "-", "×", "÷"};//运算符
         String e1="" , e2="" , e3="" , e4="";
@@ -33,14 +32,11 @@ public class generate {
                 {
                     while (num[i+1].equals("0"))
                     {num[i+1]=numberGenerate(max);}
-
                 }
-
            }
+
+
             StringBuilder str = new StringBuilder();
-
-
-
             int[] signNum = {1, 2, 3};//控制选择的运算符(0-3)//no[rd.nextInt(3)}
             int j;
             for (j = 0; j < signNum[ran.nextInt(3)]; j++) {//调整j的范围可以控制运算符的数目
@@ -54,7 +50,9 @@ public class generate {
         }
 
 
+
         public static String fractionGenerate(int max) {
+        //生成分数，包含真分数
                 Random ran = new Random();
                  int num=ran.nextInt(max);
                  int den=ran.nextInt(max);
@@ -64,8 +62,8 @@ public class generate {
         }
 
     public static String numberGenerate(int max) {
+        //生成整数
         Random ran = new Random();
-
         return String.valueOf(ran.nextInt(max));
     }
 
