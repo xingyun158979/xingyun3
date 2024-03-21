@@ -15,12 +15,12 @@ public class generate {
 
         String[] num = {e1, e2, e3, e4};//存数字
        String[] sign1={s1,s2,s3};//存运算符
-        List<String> a=new ArrayList<>();
+        List<String> a=new ArrayList<>();//存放算式
 
-        int[] e = {0, 1};
+        int[] e = {0, 1};//
              for (int i = 0; i < num.length; i++)
         {
-            int y = e[ran.nextInt(2)];
+            int y = e[ran.nextInt(2)];//y随机赋值成0或者1
 
             if (y == 0) {
                 num[i]=numberGenerate(max);//随机生成整数
@@ -39,14 +39,41 @@ public class generate {
 
 
             StringBuilder str = new StringBuilder();
-            int[] signNum = {1, 2, 3};//控制选择的运算符(0-3)//no[rd.nextInt(3)}
-            int j;
-            for (j = 0; j < signNum[ran.nextInt(3)]; j++) {//调整j的范围可以控制运算符的数目
-                str.append(num[j]).append(" ");
-                str.append(sign1[j]).append(" ");//操作数与运算符需用空格隔开，以便后续区分÷和/
-            }
-            str.append(num[j]).append(" ");
+            int[] signNum = {1, 2, 3};//控制选择的运算符(0-3)
+            int j;    int x= ran.nextInt(3);//记录随机生成的符号数
 
+            for (j = 0; j < signNum[x]; j++) {//调整j的范围可以控制运算符的数目
+                a.add(num[j]);
+               a.add(sign1[j]);
+            }
+            a.add(num[j]);
+
+                  int q= ran.nextInt(2);
+                  //q为1则添加括号
+                  if (q==1) {
+                      //添加括号
+                      int[] left1 = {0, 2};
+                      int l1 = ran.nextInt(2);
+                      int[] left2 = {0, 2, 4};
+                      int l2 = ran.nextInt(3);
+                      //根据符号数量生成括号
+                      if (x == 1) {
+                          a.add(left1[l1], "(");
+                          a.add(left1[l1] + 4, ")");
+                      } else if (x == 2) {
+                          a.add(left2[l2], "(");
+                          a.add(left2[l2] + 4, ")");
+
+                      }
+                  }
+                 //list转换成String并在符号前后加空格
+                for (int i = 0; i < a.size(); i++)
+                {  if (a.get(i).equals("+")||a.get(i).equals("-")||a.get(i).equals("×")||a.get(i).equals("÷"))
+                   {
+                       str.append(" ").append(a.get(i)).append(" ");
+                   }
+                   else {str.append(a.get(i));}
+                }
 
             return str.toString();
         }
@@ -60,7 +87,7 @@ public class generate {
                  int den=ran.nextInt(max);
                  while (den==0){den=ran.nextInt(max);}
                  while (num==0){num=ran.nextInt(max);}
-            return num + "/" + den;
+            return calculate.Simplify(num, den);
         }
 
     public static String numberGenerate(int max) {
