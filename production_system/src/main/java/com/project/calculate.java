@@ -26,7 +26,7 @@ public class calculate {
                if (remainder % i == 0 && den % i == 0) {
                    remainder = remainder / i;
                    den = den / i;
-                   i = 2;//当取到公约数时i置为0
+                   i = 1;//当取到公约数时i置为0
                }
            }
            return quotient+"'"+ remainder + "/" + den;

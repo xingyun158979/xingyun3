@@ -9,8 +9,5 @@
         <module name="production_system" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="production_system" target="16" />
-    </bytecodeTargetLevel>
   </component>
 </project>

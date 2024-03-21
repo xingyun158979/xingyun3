@@ -7,7 +7,7 @@ public class calculat_test {
         String ste;
         ste = calculate.Simplify(16,8);
         System.out.println(ste);
-        ste = calculate.numberCalculate("4'2/3","3'1/3","-" );
+        ste = calculate.numberCalculate("3/8","1'1/8","+" );
         System.out.println(ste);
     }
 
