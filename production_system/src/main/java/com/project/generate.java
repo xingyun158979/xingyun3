@@ -38,7 +38,7 @@ public class generate {
            }
 
 
-            StringBuilder str = new StringBuilder();
+
             int[] signNum = {1, 2, 3};//控制选择的运算符(0-3)
             int j;    int x= ran.nextInt(3);//记录随机生成的符号数
 
@@ -66,14 +66,16 @@ public class generate {
 
                       }
                   }
+
+        StringBuilder str = new StringBuilder();
                  //list转换成String并在符号前后加空格
-                for (int i = 0; i < a.size(); i++)
-                {  if (a.get(i).equals("+")||a.get(i).equals("-")||a.get(i).equals("×")||a.get(i).equals("÷"))
-                   {
-                       str.append(" ").append(a.get(i)).append(" ");
-                   }
-                   else {str.append(a.get(i));}
-                }
+        for (String s : a) {
+            if (s.equals("+") || s.equals("-") || s.equals("×") || s.equals("÷")) {
+                str.append(" ").append(s).append(" ");
+            } else {
+                str.append(s);
+            }
+        }
 
             return str.toString();
         }
