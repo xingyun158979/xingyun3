@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class generate {
-    public static String generateExpress(int max) {
+    public static List<String> generateExpress(int max) {
 
         Random ran = new Random();
 
@@ -67,20 +67,23 @@ public class generate {
                       }
                   }
 
-        StringBuilder str = new StringBuilder();
-                 //list转换成String并在符号前后加空格
-        for (String s : a) {
-            if (s.equals("+") || s.equals("-") || s.equals("×") || s.equals("÷")) {
-                str.append(" ").append(s).append(" ");
-            } else {
-                str.append(s);
-            }
+              return a;
         }
+
+
+        public static String listToString(List<String> expression) {
+            StringBuilder str = new StringBuilder();
+            //list转换成String并在符号前后加空格
+            for (String s : expression) {
+                if (s.equals("+") || s.equals("-") || s.equals("×") || s.equals("÷")) {
+                    str.append(" ").append(s).append(" ");
+                } else {
+                    str.append(s);
+                }
+            }
 
             return str.toString();
         }
-
-
 
         public static String fractionGenerate(int max) {
         //生成分数，包含真分数
