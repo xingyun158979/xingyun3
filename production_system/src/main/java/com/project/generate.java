@@ -1,5 +1,7 @@
 package com.project;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class generate {
@@ -13,7 +15,7 @@ public class generate {
 
         String[] num = {e1, e2, e3, e4};//存数字
        String[] sign1={s1,s2,s3};//存运算符
-
+        List<String> a=new ArrayList<>();
 
         int[] e = {0, 1};
              for (int i = 0; i < num.length; i++)
