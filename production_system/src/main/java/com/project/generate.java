@@ -71,8 +71,10 @@ public class generate {
         }
 
 
-        public static String listToString(List<String> expression) {
+        public static String listToString(int i,List<String> expression) {
             StringBuilder str = new StringBuilder();
+            str.append(i+1);
+            str.append(": ");
             //list转换成String并在符号前后加空格
             for (String s : expression) {
                 if (s.equals("+") || s.equals("-") || s.equals("×") || s.equals("÷")) {
@@ -81,7 +83,7 @@ public class generate {
                     str.append(s);
                 }
             }
-
+              str.append(" = ");
             return str.toString();
         }
 
