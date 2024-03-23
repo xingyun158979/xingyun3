@@ -13,8 +13,9 @@ public class generate {
         Random ran = new Random();
 
         String[] sign = {"+", "-", "×", "÷"};//运算符
-        String e1="" , e2="" , e3="" , e4="";
+        String e1="" , e2="" , e3="" , e4="";//初始化
         String s1= sign[ran.nextInt(4)],s2=sign[ran.nextInt(4)], s3=sign[ran.nextInt(4)];
+        /* 符号初始化 */
 
         String[] num = {e1, e2, e3, e4};//存数字
        String[] sign1={s1,s2,s3};//存运算符
@@ -23,16 +24,16 @@ public class generate {
         int[] e = {0, 1};//
              for (int i = 0; i < num.length; i++)
         {
-            int y = e[ran.nextInt(2)];//y随机赋值成0或者1
+            int y = e[ran.nextInt(2)];//y随机赋值成0或者1，为0则生成整数，否则生成分数
 
             if (y == 0) {
                 num[i]=numberGenerate(max);//随机生成整数
             }
-            else {num[i] = fractionGenerate(max);//随机生成分数
+            else {num[i] = fractionGenerate(max);//随机生成分数（包括真分数）
             }
         }
 
-           for (int i = 0; i < sign1.length; i++)
+           for (int i = 0; i < sign1.length; i++)//判断÷号后面的数字是否为0，实则重新生成，直到不为0
            {   if (sign1[i].equals("÷"))
                 {
                     while (num[i+1].equals("0"))
@@ -66,7 +67,6 @@ public class generate {
                       } else if (x == 2) {
                           a.add(left2[l2], "(");
                           a.add(left2[l2] + 4, ")");
-
                       }
                   }
 
@@ -78,7 +78,7 @@ public class generate {
             StringBuilder str = new StringBuilder();
             str.append(i+1);
             str.append(": ");
-            //list转换成String并在符号前后加空格
+            //list转换成String并在开头添加题号和符号前后添加空格
             for (String s : expression) {
                 if (s.equals("+") || s.equals("-") || s.equals("×") || s.equals("÷")) {
                     str.append(" ").append(s).append(" ");
@@ -95,46 +95,36 @@ public class generate {
                 Random ran = new Random();
                  int num=ran.nextInt(max);
                  int den=ran.nextInt(max);
-                 while (den==0){den=ran.nextInt(max);}
+                 while (den==0){den=ran.nextInt(max);}//控制分子分母不为0
                  while (num==0){num=ran.nextInt(max);}
-            return calculate.Simplify(num, den);
+            return calculate.Simplify(num, den);//返回化简后的值
         }
 
     public static String numberGenerate(int max) {
         //生成整数
         Random ran = new Random();
-        return String.valueOf(ran.nextInt(max));
+        return String.valueOf(ran.nextInt(max));//随机生成整数
     }
 
 
-     public static void repeat(int count,int max){
-         String string,result;
-
+     public static void repeat(int count,int max,String exeFile,String ansFile){
+        //count为生成题目的数量，max为数字的最大范围，exeFile和ansFile分别为要存入的表达式文件路径和答案路径
+         String string,result;//string存放表达式，result存放结果
 
          for (int i = 0; i <count;i++)
          {   List<String> list;
 
              list=generate.generateExpress(max);
              result= InfixExpression.resultCal(InfixExpression.getSuffixExpressions(list));
-             while (result==null){
+             while (result==null){//结果出现负数，重新生成表达式直到没有负数产生
                  list=generate.generateExpress(max);
                  result= InfixExpression.resultCal(InfixExpression.getSuffixExpressions(list));
              }
+             string = generate.listToString(i,list);//将表达式添加空格和题号
+             System.out.println(string+" = ");//打印表达式
 
-
-             string = generate.listToString(i,list);
-             System.out.println(string+" = "+result);
-
-             File file1 = FileUtil.file("D:/project3/production_system/src/txtFile/Exercises.txt");//表达式文件
-             FileUtil.appendUtf8String(string,file1);
-             FileUtil.appendUtf8String("\n",file1);
-
-             File file2 = FileUtil.file("D:/project3/production_system/src/txtFile/Answers.txt");//答案文件
-             FileUtil.appendUtf8String(result,file2);
-             FileUtil.appendUtf8String("\n",file2);
-
-
+             File file1 = FileUtil.file(exeFile);File file2 = FileUtil.file(ansFile);//将路径变成文件对象
+             FileUtil.appendUtf8String(string+"\n",file1);FileUtil.appendUtf8String(result+"\n",file2);//写入文件
          }
-
      }
     }

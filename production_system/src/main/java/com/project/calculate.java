@@ -5,7 +5,7 @@ public class calculate {
     public static String Simplify(int num,int den){
     int remainder;//余数
     int quotient;//商
-
+     if (num==0){return  String.valueOf(0);}//分子为0直接返回0
     if(num/den == 0) {
         for (int i = 1; i <= num; i++) {
             if (num % i == 0 && den % i == 0) {
@@ -31,13 +31,7 @@ public class calculate {
            }
            return quotient+"'"+ remainder + "/" + den;
        }
-
-
-
-
-
     }
-
  }
 
     public static  String numConvert(String num){
@@ -63,11 +57,9 @@ public class calculate {
                 return fanZine+"/"+fenMu;
             }
         }
-
     }
     //num1,num2
     public static String  numberCalculate(String num1,String num2,String sign){
-
         //1、判断是整数还是分数，带分数？并进行转换成分数，如: 22/11
         String num1_temp =  numConvert(num1);
         String num2_temp = numConvert(num2);
@@ -84,7 +76,6 @@ public class calculate {
             case "+" -> Simplify(((num_11 * num_22) + (num_21 * num_12)), ((num_12 * num_22)));
             case "-" -> {
                 if (((num_11 * num_22) - (num_21 * num_12)) < 0) {
-
                     yield null;
                 }
                 yield Simplify(((num_11 * num_22) - (num_21 * num_12)), ((num_12 * num_22)));
