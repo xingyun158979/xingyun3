@@ -93,8 +93,7 @@ public class generate {
         public static String fractionGenerate(int max) {
         //生成分数，包含真分数
                 Random ran = new Random();
-                 int num=ran.nextInt(max);
-                 int den=ran.nextInt(max);
+                 int num=ran.nextInt(max);int den=ran.nextInt(max);
                  while (den==0){den=ran.nextInt(max);}//控制分子分母不为0
                  while (num==0){num=ran.nextInt(max);}
             return calculate.Simplify(num, den);//返回化简后的值
@@ -105,7 +104,6 @@ public class generate {
         Random ran = new Random();
         return String.valueOf(ran.nextInt(max));//随机生成整数
     }
-
 
      public static void repeat(int count,int max,String exeFile,String ansFile){
         //count为生成题目的数量，max为数字的最大范围，exeFile和ansFile分别为要存入的表达式文件路径和答案路径
@@ -121,9 +119,16 @@ public class generate {
                  result= InfixExpression.resultCal(InfixExpression.getSuffixExpressions(list));
              }
              string = generate.listToString(i,list);//将表达式添加空格和题号
-             System.out.println(string+" = ");//打印表达式
+
+
 
              File file1 = FileUtil.file(exeFile);File file2 = FileUtil.file(ansFile);//将路径变成文件对象
+             if (!file1.exists() || !file2.exists())
+             {
+                 System.out.println("输入的文件不存在");//文件不存在就报错
+                 return;
+             }
+             System.out.println(string+" = ");//打印表达式
              FileUtil.appendUtf8String(string+"\n",file1);FileUtil.appendUtf8String(result+"\n",file2);//写入文件
          }
      }
