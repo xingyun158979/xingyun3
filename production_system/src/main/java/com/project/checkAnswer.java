@@ -19,9 +19,7 @@ public class checkAnswer {
                       String[] temp;
                       temp = expression.get(j).split(" ");//去除空格
                       List<String> infix = new ArrayList<>();
-                      for (String item : temp) {
-                          infix.add(item);
-                      }
+                      Collections.addAll(infix, temp);
                       infix.remove(0);//去除题号
                       StringBuilder infixTemp = new StringBuilder();
                       for (String s : infix) {
@@ -35,7 +33,6 @@ public class checkAnswer {
                       }else {
                           wrongAnswer.add(j+1);
                       }
-
                   }
                   File grade = FileUtil.file("D:/project3/production_system/src/txtFile/Grade.txt");//判断对错文件
 
@@ -48,7 +45,6 @@ public class checkAnswer {
                   FileUtil.appendUtf8String(wro,grade);
                   System.out.println("correct: "+correctAnswer.size()+correctAnswer);
                   System.out.println("wrong: "+wrongAnswer.size()+wrongAnswer);
-
               }
 
 
@@ -71,8 +67,7 @@ public class checkAnswer {
                     A.append(b.charAt(i));
                     i++;
                     if(i>=b.length())
-                    break;
-
+                      break;
                 }
                 infixExpression.add(A.toString());
             }

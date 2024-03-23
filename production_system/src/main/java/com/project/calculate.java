@@ -80,21 +80,18 @@ public class calculate {
         int num_21 = Integer.parseInt(num2_arr[0]);//第二个数分子
         int num_22 = Integer.parseInt(num2_arr[1]);//第二个数分母
 
-        switch (sign) {
-            case "+":
-                return Simplify(((num_11 * num_22) + (num_21 * num_12)), ((num_12 * num_22)));
-            case "-":
+        return switch (sign) {
+            case "+" -> Simplify(((num_11 * num_22) + (num_21 * num_12)), ((num_12 * num_22)));
+            case "-" -> {
                 if (((num_11 * num_22) - (num_21 * num_12)) < 0) {
 
-                    return null;
+                    yield null;
                 }
-                return Simplify(((num_11 * num_22) - (num_21 * num_12)), ((num_12 * num_22)));
-            case "×":
-
-                return Simplify((num_11 * num_21), (num_12 * num_22));
-            case "÷":
-                return Simplify(num_11 * num_22, num_12 * num_21);
-        }
-        return "";
+                yield Simplify(((num_11 * num_22) - (num_21 * num_12)), ((num_12 * num_22)));
+            }
+            case "×" -> Simplify((num_11 * num_21), (num_12 * num_22));
+            case "÷" -> Simplify(num_11 * num_22, num_12 * num_21);
+            default -> "";
+        };
     }
 }

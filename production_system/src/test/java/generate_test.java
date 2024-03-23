@@ -4,7 +4,6 @@ import com.project.generate;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public class generate_test {

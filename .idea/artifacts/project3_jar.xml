@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="project3:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/project3_jar</output-path>
+    <root id="archive" name="project3.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/production_system/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="production_system" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Maven/apache-maven-3.6.3/mvn_resp/com/beust/jcommander/1.82/jcommander-1.82.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Maven/apache-maven-3.6.3/mvn_resp/cn/hutool/hutool-all/5.8.25/hutool-all-5.8.25.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Maven/apache-maven-3.6.3/mvn_resp/org/testng/testng/7.9.0/testng-7.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Maven/apache-maven-3.6.3/mvn_resp/org/webjars/jquery/3.7.1/jquery-3.7.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Maven/apache-maven-3.6.3/mvn_resp/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
