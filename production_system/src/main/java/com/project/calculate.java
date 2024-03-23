@@ -81,7 +81,10 @@ public class calculate {
                 yield Simplify(((num_11 * num_22) - (num_21 * num_12)), ((num_12 * num_22)));
             }
             case "×" -> Simplify((num_11 * num_21), (num_12 * num_22));
-            case "÷" -> Simplify(num_11 * num_22, num_12 * num_21);
+            case "÷" -> {
+                if (num2.equals(String.valueOf(0))) {
+                    yield  null;}
+                   yield  Simplify(num_11 * num_22, num_12 * num_21);}
             default -> "";
         };
     }
